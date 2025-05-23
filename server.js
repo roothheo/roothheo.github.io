@@ -2,7 +2,6 @@ const express = require('express');
 const cors = require('cors');
 const fetch = require('node-fetch');
 const ColorThief = require('colorthief');
-require('dotenv').config();
 
 const app = express();
 
@@ -12,8 +11,7 @@ app.use(express.json());
 
 // Configuration Discord
 const DISCORD_CONFIG = {
-    USER_ID: process.env.DISCORD_USER_ID,
-    BOT_TOKEN: process.env.DISCORD_BOT_TOKEN
+    USER_ID: '1327483363518582784'
 };
 
 // Fonction pour convertir RGB en HSL
@@ -78,14 +76,26 @@ function hslToRgb(h, s, l) {
 // Route pour récupérer les informations de l'utilisateur Discord et les couleurs
 app.get('/api/discord/user', async (req, res) => {
     try {
-        const response = await fetch(`https://discord.com/api/v10/users/${DISCORD_CONFIG.USER_ID}`, {
-            headers: {
-                'Authorization': `Bot ${DISCORD_CONFIG.BOT_TOKEN}`
-            }
-        });
+        // Utiliser l'API publique de Discord
+        const response = await fetch(`https://discord.com/api/v10/users/${DISCORD_CONFIG.USER_ID}`);
 
         if (!response.ok) {
-            throw new Error('Erreur lors de la récupération du profil Discord');
+            // Si l'API Discord échoue, utiliser l'avatar par défaut
+            const defaultColors = {
+                primary: [255, 140, 0],    // Orange
+                secondary: [221, 206, 1],  // Jaune
+                light: [255, 179, 71]      // Orange clair
+            };
+
+            res.json({
+                user: {
+                    username: 'Default User',
+                    avatar: 'default'
+                },
+                avatarUrl: 'assets/images/poisson.png',
+                colors: defaultColors
+            });
+            return;
         }
 
         const userData = await response.json();
@@ -121,7 +131,19 @@ app.get('/api/discord/user', async (req, res) => {
         });
     } catch (error) {
         console.error('Erreur:', error);
-        res.status(500).json({ error: 'Erreur lors de la récupération du profil Discord' });
+        // En cas d'erreur, renvoyer les couleurs par défaut
+        res.json({
+            user: {
+                username: 'Default User',
+                avatar: 'default'
+            },
+            avatarUrl: 'assets/images/poisson.png',
+            colors: {
+                primary: [255, 140, 0],    // Orange
+                secondary: [221, 206, 1],  // Jaune
+                light: [255, 179, 71]      // Orange clair
+            }
+        });
     }
 });
 
