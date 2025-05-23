@@ -1,0 +1,328 @@
+/* Base styles */
+:root {
+    --window-width: 800px;
+    --window-height: 600px;
+}
+
+/* ... existing code ... */
+
+.desktop {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.window {
+    position: absolute;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    width: var(--window-width);
+    max-width: 95%;
+    height: var(--window-height);
+    max-height: 90vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.window-header {
+    padding: 10px;
+    background: #f0f0f0;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.file-explorer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.file-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background 0.2s;
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+    :root {
+        --window-width: 95%;
+        --window-height: 80vh;
+    }
+
+    .window {
+        top: 10vh;
+        transform: translateX(-50%);
+    }
+
+    .file-explorer {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .file-item img {
+        width: 30px;
+        height: auto;
+    }
+
+    .file-item div {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .window-header {
+        padding: 5px;
+        font-size: 14px;
+    }
+
+    .file-explorer {
+        grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+        gap: 5px;
+    }
+
+    .file-item {
+        padding: 5px;
+    }
+}
+
+/* Ajout d'animations fluides */
+.window {
+    transition: all 0.3s ease;
+}
+
+.file-item:hover {
+    background: rgba(0,0,0,0.05);
+    transform: scale(1.05);
+}
+
+/* Gestion du scroll */
+.window-content {
+    height: calc(100% - 40px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Amélioration de l'accessibilité */
+.file-item:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: url('../images/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+}
+
+.desktop {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+.icon {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    text-align: center;
+    cursor: pointer;
+}
+
+.icon img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.icon span {
+    color: white;
+    text-shadow: 1px 1px 2px black;
+    word-break: break-word;
+    font-size: 12px;
+    max-width: 80px;
+    display: block;
+}
+
+.window {
+    position: absolute;
+    width: 600px;
+    height: 400px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    display: none;
+}
+
+.window-header {
+    background: #333;
+    color: white;
+    padding: 5px;
+    cursor: move;
+    border-radius: 5px 5px 0 0;
+}
+
+.window-content {
+    padding: 10px;
+    height: calc(100% - 50px);
+    overflow: auto;
+}
+
+.file-explorer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.file-item {
+    width: 80px;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* Styles pour le mode Matrix */
+.matrix-mode {
+    background: #000;
+    color: #0F0;
+    font-family: 'Courier New', monospace;
+}
+
+.matrix-mode .window {
+    background: #000;
+    border: 1px solid #0F0;
+}
+
+.matrix-mode .window-header {
+    background: #0F0;
+    color: #000;
+}
+
+.bash-ascii {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #0F0;
+    font-family: monospace;
+    white-space: pre;
+    text-align: center;
+    z-index: 1000;
+}
+
+.context-menu {
+    position: fixed;
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    padding: 5px 0;
+    min-width: 150px;
+    z-index: 1000;
+    display: none;
+}
+
+.context-menu-item {
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.context-menu-item:hover {
+    background-color: #f0f0f0;
+}
+
+.context-menu-separator {
+    height: 1px;
+    background-color: #ccc;
+    margin: 5px 0;
+}
+
+.new-folder {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.new-folder img {
+    width: 40px;
+    height: 40px;
+}
+
+.drag-over {
+    background-color: rgba(0, 0, 0, 0.1);
+    border: 2px dashed #666;
+}
+
+.drop-message {
+    width: 100%;
+    text-align: center;
+    color: #666;
+    padding: 20px;
+}
+
+.image-window {
+    width: 800px;
+    height: 600px;
+}
+
+.image-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f5f5f5;
+}
+
+.properties-window {
+    width: 300px !important;
+    height: 250px !important;
+}
+
+.properties-window .window-content {
+    background: #f5f5f5;
+}
+
+.properties-window p {
+    margin: 8px 0;
+    font-size: 14px;
+}
+
+.trash-bin {
+    position: fixed !important;
+    z-index: 100;
+}
+
+.trash-bin img {
+    width: 48px;
+    height: 48px;
+    transition: all 0.3s ease;
+}
+
+.trash-bin.drag-over img {
+    transform: scale(1.2);
+}
+
+.share-window {
+    width: 400px !important;
+    height: 200px !important;
+}
+
+.share-link-container {
+    display: flex;
+    gap: 10px;
+}

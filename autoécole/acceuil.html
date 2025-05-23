@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style1.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/icon.png">
+    <title>Auto école</title>
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="js/theme.js" defer></script>
+    <script src="js/menu.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="images/logo.png" alt="Logo Auto-École">
+        </div>
+        
+        <div class="nav-links">
+            <ul>
+                <li><a href="acceuil.html" class="active">Accueil</a></li>
+                <li><a href="permis.html">Permis</a></li>
+                <li><a href="legislation.html">Législation</a></li>
+                <li><a href="tarifs.html">Tarifs</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="burger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="theme-switch">
+            <button id="themeToggle" class="theme-btn">
+                <i class="fas fa-moon"></i>
+                <span>Thème</span>
+            </button>
+        </div>
+    </nav>
+    
+    <div class="entete">
+        <h1>Bienvenue à l'Auto-École Bash</h1>
+        <div class="sous-titre">
+            <h2>Votre réussite, notre priorité</h2>
+            <p>Formez-vous à la conduite avec des professionnels passionnés et expérimentés</p>
+        </div>
+        <div class="points-cles">
+            <ul>
+                <li>✓ Formation personnalisée</li>
+                <li>✓ Taux de réussite élevé</li>
+                <li>✓ Moniteurs diplômés d'État</li>
+                <li>✓ Véhicules récents et équipés</li>
+            </ul>
+        </div>
+        <div class="cta-button">
+            <a href="contact.html" class="btn">Commencez votre formation</a>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Auto-École Bash. Tous droits réservés.</p>
+            <div class="footer-links">
+                <a href="mentions-legales.html">Mentions légales</a>
+                <a href="confidentialite.html">Politique de confidentialité</a>
+            </div>
+        </div>
+    </footer>
+    <div class="login-container">
+        <form class="login-form" action="php/auth/login.php" method="POST">
+            <div class="form-group">
+                <label for="username">Nom d'utilisateur</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Mot de passe</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn">Se connecter</button>
+        </form>
+    </div>
+</body>
+</html>

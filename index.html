@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="icon" type="image/png" href="assets/images/icon.png">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.min.js"></script>
+    <style>
+        * {
+            font-family: 'Courier New', Courier, monospace !important;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-gradient">
+        <header class="main-header">
+            <div class="lock-icon">🔒</div>
+            <h1>Portfolio</h1>
+            <p>Développeur / Pentester</p>
+        </header>
+
+        <nav class="main-nav">
+            <a href="#about">Qui suis-je ?</a>
+            <a href="#missions">Projets/Missions</a>
+            <a href="#competences">Compétences</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="container">
+            <section id="about" class="card">
+                <div class="content-wrapper">
+                    <div class="text-content">
+                        <h2>Qui suis-je</h2>
+                        <p>Je suis un jeune étudiant en informatique et je suis passionné par la sécurité informatique.</p>
+                    </div>
+                    <div class="profile-image">
+                        <img src="assets/images/poisson.png" alt="Profile">
+                    </div>
+                </div>
+            </section>
+
+            <section id="competences" class="card">
+                <h2>Compétences</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Systèmes</h3>
+                        <div class="skill-item">
+                            <span class="skill-name">Linux</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" style="width: 60%;"></div>
+                            </div>
+                            <span class="skill-level-text">Junior</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Développement Web</h3>
+                        <div class="skill-item">
+                            <span class="skill-name">HTML</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" style="width: 60%;"></div>
+                            </div>
+                            <span class="skill-level-text">Junior</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">CSS</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" style="width: 60%;"></div>
+                            </div>
+                            <span class="skill-level-text">Junior</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">JavaScript</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" style="width: 20%;"></div>
+                            </div>
+                            <span class="skill-level-text">Débutant</span>
+                        </div>
+                    </div>
+                    <div class="language-category">
+                        <h3>Langues</h3>
+                        <div class="skill-item">
+                            <span class="skill-name">Français</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" style="width: 100%;"></div>
+                            </div>
+                            <span class="skill-level-text">Natif</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Anglais</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" style="width: 80%;"></div>
+                            </div>
+                            <span class="skill-level-text">Avancé</span>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Italien</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" style="width: 10%;"></div>
+                            </div>
+                            <span class="skill-level-text">Débutant</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Sécurité</h3>
+                        <div class="skill-item">
+                            <span class="skill-name">Pentest</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" style="width: 20%;"></div>
+                            </div>
+                            <span class="skill-level-text">Débutant</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="missions" class="card">
+                <h2>Projets/Missions</h2>
+                <p class="subtitle">à remplir</p>
+
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <img src="assets/images/pentest.png" alt="Test d'intrusion Web">
+                        <h3></h3>
+                        <p></p>
+                        <a href="#" class="button">Méthodologie d'un pentest</a>
+                    </div>
+
+                    <div class="project-card">
+                        <img src="assets/images/thm.png" alt="THM">
+                        <h3></h3>
+                        <p></p>
+                        <a href="https://tryhackme.com/r/p/bash1337" class="button">THM</a>
+                    </div>
+
+                    <!-- Ajoutez d'autres projets similaires ici -->
+                </div>
+            </section>
+
+            <section id="contact" class="card">
+                <h2>Contact</h2>
+                <div class="contact-intro">
+                    <p>Vous souhaitez me contacter ? C'est <span class="highlight">parti</span> !</p>
+                </div>
+
+                <form action="https://formspree.io/f/meoqgaoz" method="POST" class="contact-form">
+                    <div class="form-group">
+                        <input type="text" name="name" id="name" required>
+                        <label for="name">Votre nom</label>
+                        <div class="line"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" name="email" id="email" required>
+                        <label for="email">Votre email</label>
+                        <div class="line"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <textarea name="message" id="message" rows="5" required></textarea>
+                        <label for="message">Votre message</label>
+                        <div class="line"></div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <span>Envoyer le message</span>
+                        <div class="btn-glow"></div>
+                    </button>
+                </form>
+            </section>
+        </div>
+    </div>
+
+    <div class="bash-ascii" style="display: none;">
+        <pre>
+ ____    _    ____  _   _
+| __ )  / \  / ___|| | | |
+|  _ \ / _ \ \___ \| |_| |
+| |_) / ___ \ ___) |  _  |
+|____/_/   \_\____/|_| |_|
+
+    Appuyez sur 'ESC' pour revenir à la normale
+        </pre>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
