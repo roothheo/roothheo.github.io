@@ -648,6 +648,28 @@
             font-weight: bold;
             border-radius: 0 0 12px 0;
         }
+        #chatbot-badge {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 56px;
+            height: 56px;
+            background: var(--accent-color);
+            color: #222;
+            border-radius: 50%;
+            box-shadow: 0 0 12px var(--accent-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 99998;
+            transition: box-shadow 0.2s;
+            border: 2px solid var(--card-bg);
+        }
+        #chatbot-badge:hover {
+            box-shadow: 0 0 24px var(--accent-color);
+        }
     </style>
 </head>
 <body>
@@ -843,6 +865,9 @@
         <button type="submit">Envoyer</button>
       </form>
     </div>
+    <div id="chatbot-badge" style="display:none;">
+      <span>��</span>
+    </div>
 
     <script src="assets/js/script.js"></script>
     <script>
@@ -1006,7 +1031,16 @@
         };
 
         // Fermer le chatbot
-        chatbotClose.onclick = () => chatbotWidget.style.display = 'none';
+        chatbotClose.onclick = () => {
+            chatbotWidget.style.display = 'none';
+            document.getElementById('chatbot-badge').style.display = 'flex';
+        };
+
+        // Réouvrir le chatbot en cliquant sur la gommette
+        document.getElementById('chatbot-badge').onclick = () => {
+            chatbotWidget.style.display = 'flex';
+            document.getElementById('chatbot-badge').style.display = 'none';
+        };
 
         // Message de bienvenue
         addMessage('Salut ! Pose-moi une question sur le portfolio ou mes compétences.', 'bot');
