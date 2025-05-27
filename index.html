@@ -587,6 +587,67 @@
         .main-content {
             margin-top: 80px;
         }
+
+        /* Chatbot flottant */
+        #chatbot-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 320px;
+            background: var(--card-bg);
+            border: 1px solid var(--accent-color);
+            border-radius: 12px;
+            box-shadow: 0 0 20px var(--accent-color);
+            font-family: 'Courier New', monospace;
+            z-index: 99999;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        #chatbot-header {
+            background: var(--accent-color);
+            color: #222;
+            padding: 10px;
+            font-weight: bold;
+            cursor: move;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #chatbot-close {
+            cursor: pointer;
+            font-size: 20px;
+        }
+        #chatbot-messages {
+            background: transparent;
+            color: var(--text-color);
+            padding: 10px;
+            height: 180px;
+            overflow-y: auto;
+            font-size: 15px;
+        }
+        #chatbot-form {
+            display: flex;
+            border-top: 1px solid var(--accent-color);
+        }
+        #chatbot-input {
+            flex: 1;
+            border: none;
+            padding: 10px;
+            background: transparent;
+            color: var(--accent-color);
+            font-family: inherit;
+            outline: none;
+        }
+        #chatbot-form button {
+            background: var(--accent-color);
+            color: #222;
+            border: none;
+            padding: 0 16px;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 0 0 12px 0;
+        }
     </style>
 </head>
 <body>
@@ -773,6 +834,16 @@
         </pre>
     </div>
 
+    <!-- Chatbot flottant -->
+    <div id="chatbot-widget">
+      <div id="chatbot-header">🤖 Chatbot <span id="chatbot-close">&times;</span></div>
+      <div id="chatbot-messages"></div>
+      <form id="chatbot-form">
+        <input type="text" id="chatbot-input" placeholder="Pose-moi une question..." autocomplete="off" />
+        <button type="submit">Envoyer</button>
+      </form>
+    </div>
+
     <script src="assets/js/script.js"></script>
     <script>
         // Gestion du thème
@@ -894,6 +965,51 @@
                 card.classList.remove('focused');
             });
         });
+
+        const chatbotWidget = document.getElementById('chatbot-widget');
+        const chatbotMessages = document.getElementById('chatbot-messages');
+        const chatbotForm = document.getElementById('chatbot-form');
+        const chatbotInput = document.getElementById('chatbot-input');
+        const chatbotClose = document.getElementById('chatbot-close');
+
+        // Réponses simples
+        function getBotResponse(msg) {
+            msg = msg.toLowerCase();
+            if (msg.includes('bonjour') || msg.includes('salut')) return 'Bonjour ! 👋';
+            if (msg.includes('compétence') || msg.includes('skills')) return 'Je maîtrise Linux, HTML, CSS, un peu de JS et le pentest !';
+            if (msg.includes('projet') || msg.includes('mission')) return 'Je travaille sur jeparledoncjesuis et j\'ai fait des labs TryHackMe.';
+            if (msg.includes('contact')) return 'Tu peux utiliser le formulaire de contact en bas de la page !';
+            if (msg.includes('github')) return 'Voici mon GitHub : <a href="https://github.com/roothheo" target="_blank">roothheo</a>';
+            if (msg.includes('pentest')) return 'La sécurité informatique et le pentest sont mes passions !';
+            if (msg.includes('site') || msg.includes('portfolio')) return 'Ce site est mon portfolio, tu y trouveras mes compétences et projets.';
+            return 'Désolé, je ne comprends pas encore cette question 😅';
+        }
+
+        // Affichage des messages
+        function addMessage(text, from='bot') {
+            const msg = document.createElement('div');
+            msg.style.margin = '8px 0';
+            msg.style.textAlign = from === 'bot' ? 'left' : 'right';
+            msg.innerHTML = (from === 'bot' ? '🤖 ' : '🧑 ') + text;
+            chatbotMessages.appendChild(msg);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+
+        // Gestion de l'envoi
+        chatbotForm.onsubmit = e => {
+            e.preventDefault();
+            const userMsg = chatbotInput.value.trim();
+            if (!userMsg) return;
+            addMessage(userMsg, 'user');
+            setTimeout(() => addMessage(getBotResponse(userMsg), 'bot'), 500);
+            chatbotInput.value = '';
+        };
+
+        // Fermer le chatbot
+        chatbotClose.onclick = () => chatbotWidget.style.display = 'none';
+
+        // Message de bienvenue
+        addMessage('Salut ! Pose-moi une question sur le portfolio ou mes compétences.', 'bot');
     </script>
 </body>
 </html>
