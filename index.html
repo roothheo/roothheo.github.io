@@ -377,20 +377,104 @@
         .submit-btn:hover .btn-glow {
             transform: scale(1);
         }
+
+        /* Effet de focus sur les catégories (nouvelle version JS) */
+        .skills-grid.focusing .skill-category,
+        .skills-grid.focusing .language-category {
+            filter: blur(12px) brightness(0.5);
+            transform: scale(0.95);
+            transition: all 0.5s;
+        }
+        .skills-grid.focusing .skill-category.focused,
+        .skills-grid.focusing .language-category.focused {
+            filter: none !important;
+            transform: scale(1.05);
+            z-index: 2;
+            border-color: #ffd700;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+        .skills-grid .skill-category,
+        .skills-grid .language-category {
+            transition: all 0.5s;
+        }
+
+        /* Animation de réapparition */
+        @keyframes fadeIn {
+            from {
+                opacity: 0.5;
+                filter: blur(2px);
+            }
+            to {
+                opacity: 1;
+                filter: blur(0);
+            }
+        }
+
+        .skill-category:not(:hover) {
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        /* Effet de survol sur les barres de compétences */
+        .skill-bar {
+            transition: all 0.3s ease;
+            background: linear-gradient(90deg, #ffd700, #ffeb3b);
+        }
+
+        .skill-category:hover .skill-bar {
+            background: linear-gradient(90deg, #ffd700, #ffeb3b);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+        }
+
+        /* Effet de survol sur les noms de compétences */
+        .skill-name {
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover .skill-name {
+            color: #ffd700;
+            text-shadow: 0 0 5px #ffd700;
+        }
+
+        /* Effet de survol sur les niveaux */
+        .skill-level-text {
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover .skill-level-text {
+            color: #ffd700;
+            text-shadow: 0 0 5px #ffd700;
+        }
+
+        #matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.25;
+        }
+        .background-gradient, .container, header, nav, section, .card {
+            position: relative;
+            z-index: 1;
+        }
     </style>
 </head>
 <body>
+    <canvas id="matrix-bg"></canvas>
     <div class="background-gradient">
         <header class="main-header">
             <div class="lock-icon">🔒</div>
-            <h1>Portfolio</h1>
+            <h1><span class="glitch-text glitch-title">Portfolio</span></h1>
             <p>Développeur / Pentester</p>
         </header>
 
         <nav class="main-nav">
             <a href="#about">Qui suis-je ?</a>
-            <a href="#missions">Projets/Missions</a>
             <a href="#competences">Compétences</a>
+
+            <a href="#missions">Projets/Missions</a>
             <a href="#contact">Contact</a>
         </nav>
 
@@ -445,7 +529,7 @@
                             <span class="skill-level-text">Débutant</span>
                         </div>
                     </div>
-                    <div class="language-category">
+                    <div class="skill-category">
                         <h3>Langues</h3>
                         <div class="skill-item">
                             <span class="skill-name">Français</span>

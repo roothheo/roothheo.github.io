@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Fonction pour appliquer l'effet glitch aléatoirement
     function applyRandomGlitch() {
-        const elements = document.querySelectorAll('h1, h2, h3, p');
+        const elements = document.querySelectorAll('h2, h3, p');
         const randomElement = elements[Math.floor(Math.random() * elements.length)];
         
         if (!randomElement.classList.contains('glitch')) {
@@ -156,11 +156,76 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Appliquer l'effet de typing au titre principal
-    const mainTitle = document.querySelector('h1');
+    const mainTitle = document.querySelector('.glitch-title');
     if (mainTitle) {
         typeWriter(mainTitle, mainTitle.textContent);
     }
 
     // Appliquer l'effet glitch aléatoirement toutes les 5 secondes
     setInterval(applyRandomGlitch, 5000);
+
+    // Effet de focus sur les catégories de compétences
+    setupSkillCategoryFocus();
+
+    // Effet Matrix en arrière-plan avec des $
+    startMatrixEffect();
 });
+
+// Effet de focus sur les catégories de compétences
+function setupSkillCategoryFocus() {
+    const grid = document.querySelector('.skills-grid');
+    if (!grid) return;
+    const categories = grid.querySelectorAll('.skill-category, .language-category');
+
+    categories.forEach(cat => {
+        cat.addEventListener('mouseenter', () => {
+            grid.classList.add('focusing');
+            categories.forEach(c => c.classList.remove('focused'));
+            cat.classList.add('focused');
+        });
+        cat.addEventListener('mouseleave', () => {
+            grid.classList.remove('focusing');
+            categories.forEach(c => c.classList.remove('focused'));
+        });
+    });
+}
+
+// Effet Matrix en arrière-plan avec des $
+function startMatrixEffect() {
+    const canvas = document.getElementById('matrix-bg');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    let fontSize = 22;
+    let columns = Math.floor(window.innerWidth / fontSize);
+    let drops = Array(columns).fill(1);
+
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        columns = Math.floor(canvas.width / fontSize);
+        drops = Array(columns).fill(1);
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    function draw() {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.font = fontSize + "px 'Courier New', Courier, monospace";
+        ctx.fillStyle = '#ffd700';
+        for (let i = 0; i < drops.length; i++) {
+            const text = '$';
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+            if (Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+            drops[i]++;
+            if (drops[i] * fontSize > canvas.height) {
+                drops[i] = 0;
+            }
+        }
+    }
+    setInterval(draw, 50);
+    draw(); // Premier dessin immédiat
+}
