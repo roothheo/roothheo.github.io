@@ -403,21 +403,25 @@
         /* Effet de focus sur les catégories (nouvelle version JS) */
         .skills-grid.focusing .skill-category,
         .skills-grid.focusing .language-category {
-            filter: blur(12px) brightness(0.5);
-            transform: scale(0.95);
-            transition: all 0.5s;
+            filter: blur(6px) grayscale(60%) brightness(0.4) contrast(0.7);
+            opacity: 0.5;
+            pointer-events: none;
+            transition: filter 0.4s, opacity 0.4s, transform 0.4s;
         }
         .skills-grid.focusing .skill-category.focused,
         .skills-grid.focusing .language-category.focused {
             filter: none !important;
-            transform: scale(1.05);
+            opacity: 1;
+            pointer-events: auto;
+            transform: scale(1.07);
             z-index: 2;
             border-color: var(--accent-color);
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+            box-shadow: 0 0 30px 8px var(--accent-color);
+            transition: filter 0.4s, opacity 0.4s, transform 0.4s;
         }
         .skills-grid .skill-category,
         .skills-grid .language-category {
-            transition: all 0.5s;
+            transition: filter 0.4s, opacity 0.4s, transform 0.4s;
         }
 
         /* Animation de réapparition */
@@ -871,6 +875,21 @@
         }, { threshold: 0.5 });
 
         sections.forEach(section => observer.observe(section));
+
+        // Effet de focus sur les cartes de compétences
+        const skillsGrid = document.querySelector('.skills-grid');
+        const skillCategories = document.querySelectorAll('.skill-category, .language-category');
+
+        skillCategories.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                skillsGrid.classList.add('focusing');
+                card.classList.add('focused');
+            });
+            card.addEventListener('mouseleave', () => {
+                skillsGrid.classList.remove('focusing');
+                card.classList.remove('focused');
+            });
+        });
     </script>
 </body>
 </html>
