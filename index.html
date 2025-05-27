@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,64 +17,77 @@
     <meta name="twitter:description" content="Portfolio d'un étudiant passionné de cybersécurité et développement.">
     <meta name="twitter:image" content="https://roothheo.github.io/assets/images/icon.png">
     <style>
-        * {
-            font-family: 'Courier New', Courier, monospace !important;
-            letter-spacing: 0.5px;
+        /* Thème clair/sombre */
+        :root[data-theme="light"] {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --accent-color: #ffd700;
+            --card-bg: rgba(255, 255, 255, 0.8);
+            --border-color: #333333;
+        }
+
+        :root[data-theme="dark"] {
+            --bg-color: #000000;
+            --text-color: #ffd700;
+            --accent-color: #ffd700;
+            --card-bg: rgba(0, 0, 0, 0.8);
+            --border-color: #ffd700;
         }
 
         body {
-            background-color: #000;
-            color: #ffd700;
-            text-shadow: 0 0 5px #ffd700;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            text-shadow: 0 0 5px var(--accent-color);
+            transition: all 0.3s ease;
         }
 
         .card {
-            background-color: rgba(0, 0, 0, 0.8);
-            border: 1px solid #ffd700;
-            box-shadow: 0 0 10px #ffd700;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 0 10px var(--accent-color);
         }
 
         h1, h2, h3 {
-            color: #ffd700;
-            text-shadow: 0 0 8px #ffd700;
+            color: var(--accent-color);
+            text-shadow: 0 0 8px var(--accent-color);
         }
 
         a {
-            color: #ffd700;
+            color: var(--accent-color);
             text-decoration: none;
             transition: all 0.3s ease;
         }
 
         a:hover {
-            text-shadow: 0 0 10px #ffd700;
+            text-shadow: 0 0 10px var(--accent-color);
         }
 
         .button {
-            border: 1px solid #ffd700;
-            color: #ffd700;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
             background-color: transparent;
         }
 
         .button:hover {
             background-color: rgba(255, 215, 0, 0.1);
-            box-shadow: 0 0 15px #ffd700;
+            box-shadow: 0 0 15px var(--accent-color);
         }
 
         input, textarea {
-            background-color: rgba(0, 0, 0, 0.8);
-            border: 1px solid #ffd700;
-            color: #ffd700;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--accent-color);
         }
 
         input:focus, textarea:focus {
-            box-shadow: 0 0 10px #ffd700;
+            box-shadow: 0 0 10px var(--accent-color);
             outline: none;
         }
 
         /* Effet de typing */
         .typing-effect {
             overflow: hidden;
-            border-right: 2px solid #ffd700;
+            border-right: 2px solid var(--accent-color);
             white-space: nowrap;
             margin: 0 auto;
             animation: typing 3.5s steps(40, end),
@@ -88,7 +101,7 @@
 
         @keyframes blink-caret {
             from, to { border-color: transparent }
-            50% { border-color: #ffd700 }
+            50% { border-color: var(--accent-color) }
         }
 
         /* Effet de glitch */
@@ -120,14 +133,14 @@
 
         .glitch:before {
             left: 2px;
-            text-shadow: -2px 0 #ffd700;
+            text-shadow: -2px 0 var(--accent-color);
             clip: rect(44px, 450px, 56px, 0);
             animation: glitch-anim 5s infinite linear alternate-reverse;
         }
 
         .glitch:after {
             left: -2px;
-            text-shadow: -2px 0 #ffd700, 2px 2px #ffd700;
+            text-shadow: -2px 0 var(--accent-color), 2px 2px var(--accent-color);
             clip: rect(44px, 450px, 56px, 0);
             animation: glitch-anim2 5s infinite linear alternate-reverse;
         }
@@ -277,7 +290,7 @@
             font-size: 16px;
             background: transparent;
             border: none;
-            border-bottom: 2px solid #ffd700;
+            border-bottom: 2px solid var(--accent-color);
             outline: none;
             transition: all 0.3s ease;
         }
@@ -288,7 +301,7 @@
             left: 0;
             padding: 10px 0;
             font-size: 16px;
-            color: #ffd700;
+            color: var(--accent-color);
             pointer-events: none;
             transition: all 0.3s ease;
         }
@@ -299,14 +312,14 @@
         .form-group textarea:valid ~ label {
             top: -20px;
             font-size: 12px;
-            color: #ffd700;
-            text-shadow: 0 0 5px #ffd700;
+            color: var(--accent-color);
+            text-shadow: 0 0 5px var(--accent-color);
         }
 
         .form-group input:focus,
         .form-group textarea:focus {
-            border-bottom: 2px solid #ffd700;
-            box-shadow: 0 0 10px #ffd700;
+            border-bottom: 2px solid var(--accent-color);
+            box-shadow: 0 0 10px var(--accent-color);
         }
 
         .form-group .line {
@@ -315,21 +328,21 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: #ffd700;
+            background: var(--accent-color);
             transition: all 0.3s ease;
         }
 
         .form-group input:focus ~ .line,
         .form-group textarea:focus ~ .line {
             width: 100%;
-            box-shadow: 0 0 10px #ffd700;
+            box-shadow: 0 0 10px var(--accent-color);
         }
 
         /* Animation de pulsation pour le label */
         @keyframes labelPulse {
-            0% { text-shadow: 0 0 5px #ffd700; }
-            50% { text-shadow: 0 0 15px #ffd700; }
-            100% { text-shadow: 0 0 5px #ffd700; }
+            0% { text-shadow: 0 0 5px var(--accent-color); }
+            50% { text-shadow: 0 0 15px var(--accent-color); }
+            100% { text-shadow: 0 0 5px var(--accent-color); }
         }
 
         .form-group input:focus ~ label,
@@ -344,7 +357,7 @@
             right: 0;
             top: 50%;
             transform: translateY(-50%);
-            color: #ffd700;
+            color: var(--accent-color);
             opacity: 0;
             transition: all 0.3s ease;
         }
@@ -359,8 +372,8 @@
             position: relative;
             padding: 12px 30px;
             background: transparent;
-            border: 2px solid #ffd700;
-            color: #ffd700;
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
             font-size: 16px;
             cursor: pointer;
             overflow: hidden;
@@ -369,7 +382,7 @@
 
         .submit-btn:hover {
             background: rgba(255, 215, 0, 0.1);
-            box-shadow: 0 0 20px #ffd700;
+            box-shadow: 0 0 20px var(--accent-color);
         }
 
         .btn-glow {
@@ -399,7 +412,7 @@
             filter: none !important;
             transform: scale(1.05);
             z-index: 2;
-            border-color: #ffd700;
+            border-color: var(--accent-color);
             box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
         }
         .skills-grid .skill-category,
@@ -426,11 +439,11 @@
         /* Effet de survol sur les barres de compétences */
         .skill-bar {
             transition: all 0.3s ease;
-            background: linear-gradient(90deg, #ffd700, #ffeb3b);
+            background: linear-gradient(90deg, var(--accent-color), #ffeb3b);
         }
 
         .skill-category:hover .skill-bar {
-            background: linear-gradient(90deg, #ffd700, #ffeb3b);
+            background: linear-gradient(90deg, var(--accent-color), #ffeb3b);
             box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
         }
 
@@ -440,8 +453,8 @@
         }
 
         .skill-category:hover .skill-name {
-            color: #ffd700;
-            text-shadow: 0 0 5px #ffd700;
+            color: var(--accent-color);
+            text-shadow: 0 0 5px var(--accent-color);
         }
 
         /* Effet de survol sur les niveaux */
@@ -450,8 +463,8 @@
         }
 
         .skill-category:hover .skill-level-text {
-            color: #ffd700;
-            text-shadow: 0 0 5px #ffd700;
+            color: var(--accent-color);
+            text-shadow: 0 0 5px var(--accent-color);
         }
 
         #matrix-bg {
@@ -468,167 +481,279 @@
             position: relative;
             z-index: 1;
         }
+
+        /* Switch thème */
+        .theme-switch-wrapper {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .theme-switch {
+            display: inline-block;
+            height: 34px;
+            position: relative;
+            width: 60px;
+        }
+
+        .theme-switch input {
+            display: none;
+        }
+
+        .slider {
+            background-color: #ccc;
+            bottom: 0;
+            cursor: pointer;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            background-color: #fff;
+            bottom: 4px;
+            content: "";
+            height: 26px;
+            left: 4px;
+            position: absolute;
+            transition: .4s;
+            width: 26px;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--accent-color);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        /* Menu de navigation */
+        .nav-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--card-bg);
+            backdrop-filter: blur(10px);
+            z-index: 999;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            gap: 2rem;
+        }
+
+        .nav-item {
+            position: relative;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-item:hover::after {
+            width: 100%;
+        }
+
+        .nav-item.active::after {
+            width: 100%;
+        }
+
+        /* Ajustement du contenu principal */
+        .main-content {
+            margin-top: 80px;
+        }
     </style>
 </head>
 <body>
-    <canvas id="matrix-bg"></canvas>
-    <div class="background-gradient">
-        <header class="main-header">
-            <div class="lock-icon">🔒</div>
-            <h1><span class="glitch-text glitch-title">Portfolio</span></h1>
-            <p>Développeur / Pentester</p>
-        </header>
+    <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider"></div>
+        </label>
+    </div>
 
-        <nav class="main-nav">
-            <a href="#about">Qui suis-je ?</a>
-            <a href="#competences">Compétences</a>
+    <nav class="nav-container">
+        <ul class="nav-menu">
+            <li class="nav-item active" data-section="accueil">Accueil</li>
+            <li class="nav-item" data-section="projets">Projets</li>
+            <li class="nav-item" data-section="competences">Compétences</li>
+            <li class="nav-item" data-section="contact">Contact</li>
+        </ul>
+    </nav>
 
-            <a href="#missions">Projets/Missions</a>
-            <a href="#contact">Contact</a>
-        </nav>
+    <div class="main-content">
+        <canvas id="matrix-bg"></canvas>
+        <div class="background-gradient">
+            <header class="main-header">
+                <div class="lock-icon">🔒</div>
+                <h1><span class="glitch-text glitch-title">Portfolio</span></h1>
+                <p>Développeur / Pentester</p>
+            </header>
 
-        <div class="container">
-            <section id="about" class="card">
-                <div class="content-wrapper">
-                    <div class="text-content">
-                        <h2>Qui suis-je</h2>
-                        <p>Je suis un jeune étudiant en informatique et je suis passionné par la sécurité informatique.J'adore le skin poiscaille comme vous avez pu le remarquer.</p>
-                    </div>
-                    <div class="profile-image">
-                        <img src="assets/images/poisson.png" alt="Profile">
-                    </div>
-                </div>
-            </section>
-
-            <section id="competences" class="card">
-                <h2>Compétences</h2>
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h3>Systèmes</h3>
-                        <div class="skill-item">
-                            <span class="skill-name">Linux</span>
-                            <div class="skill-level">
-                                <div class="skill-bar" style="width: 60%;"></div>
-                            </div>
-                            <span class="skill-level-text">Junior</span>
+            <div class="container">
+                <section id="about" class="card">
+                    <div class="content-wrapper">
+                        <div class="text-content">
+                            <h2>Qui suis-je</h2>
+                            <p>Je suis un jeune étudiant en informatique et je suis passionné par la sécurité informatique.J'adore le skin poiscaille comme vous avez pu le remarquer.</p>
+                        </div>
+                        <div class="profile-image">
+                            <img src="assets/images/poisson.png" alt="Profile">
                         </div>
                     </div>
+                </section>
 
-                    <div class="skill-category">
-                        <h3>Développement Web</h3>
-                        <div class="skill-item">
-                            <span class="skill-name">HTML</span>
-                            <div class="skill-level">
-                                <div class="skill-bar" style="width: 60%;"></div>
+                <section id="competences" class="card">
+                    <h2>Compétences</h2>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h3>Systèmes</h3>
+                            <div class="skill-item">
+                                <span class="skill-name">Linux</span>
+                                <div class="skill-level">
+                                    <div class="skill-bar" style="width: 60%;"></div>
+                                </div>
+                                <span class="skill-level-text">Junior</span>
                             </div>
-                            <span class="skill-level-text">Junior</span>
                         </div>
-                        <div class="skill-item">
-                            <span class="skill-name">CSS</span>
-                            <div class="skill-level">
-                                <div class="skill-bar" style="width: 60%;"></div>
+
+                        <div class="skill-category">
+                            <h3>Développement Web</h3>
+                            <div class="skill-item">
+                                <span class="skill-name">HTML</span>
+                                <div class="skill-level">
+                                    <div class="skill-bar" style="width: 60%;"></div>
+                                </div>
+                                <span class="skill-level-text">Junior</span>
                             </div>
-                            <span class="skill-level-text">Junior</span>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">JavaScript</span>
-                            <div class="skill-level">
-                                <div class="skill-bar" style="width: 20%;"></div>
+                            <div class="skill-item">
+                                <span class="skill-name">CSS</span>
+                                <div class="skill-level">
+                                    <div class="skill-bar" style="width: 60%;"></div>
+                                </div>
+                                <span class="skill-level-text">Junior</span>
                             </div>
-                            <span class="skill-level-text">Débutant</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Langues</h3>
-                        <div class="skill-item">
-                            <span class="skill-name">Français</span>
-                            <div class="skill-level">
-                                <div class="skill-bar" style="width: 100%;"></div>
+                            <div class="skill-item">
+                                <span class="skill-name">JavaScript</span>
+                                <div class="skill-level">
+                                    <div class="skill-bar" style="width: 20%;"></div>
+                                </div>
+                                <span class="skill-level-text">Débutant</span>
                             </div>
-                            <span class="skill-level-text">Natif</span>
                         </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Anglais</span>
-                            <div class="skill-level">
-                                <div class="skill-bar" style="width: 80%;"></div>
+                        <div class="skill-category">
+                            <h3>Langues</h3>
+                            <div class="skill-item">
+                                <span class="skill-name">Français</span>
+                                <div class="skill-level">
+                                    <div class="skill-bar" style="width: 100%;"></div>
+                                </div>
+                                <span class="skill-level-text">Natif</span>
                             </div>
-                            <span class="skill-level-text">Avancé</span>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Italien</span>
-                            <div class="skill-level">
-                                <div class="skill-bar" style="width: 10%;"></div>
+                            <div class="skill-item">
+                                <span class="skill-name">Anglais</span>
+                                <div class="skill-level">
+                                    <div class="skill-bar" style="width: 80%;"></div>
+                                </div>
+                                <span class="skill-level-text">Avancé</span>
                             </div>
-                            <span class="skill-level-text">Débutant</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Sécurité</h3>
-                        <div class="skill-item">
-                            <span class="skill-name">Pentest</span>
-                            <div class="skill-level">
-                                <div class="skill-bar" style="width: 20%;"></div>
+                            <div class="skill-item">
+                                <span class="skill-name">Italien</span>
+                                <div class="skill-level">
+                                    <div class="skill-bar" style="width: 10%;"></div>
+                                </div>
+                                <span class="skill-level-text">Débutant</span>
                             </div>
-                            <span class="skill-level-text">Débutant</span>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Sécurité</h3>
+                            <div class="skill-item">
+                                <span class="skill-name">Pentest</span>
+                                <div class="skill-level">
+                                    <div class="skill-bar" style="width: 20%;"></div>
+                                </div>
+                                <span class="skill-level-text">Débutant</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            <section id="missions" class="card">
-                <h2>Projets/Missions</h2>
-                <p class="subtitle">Actuellement en cours de réalisation du projet jeparledoncjesuis qui sera un site de lanceur d'alertes,gratuit open source et chiffré.</p>
+                <section id="missions" class="card">
+                    <h2>Projets/Missions</h2>
+                    <p class="subtitle">Actuellement en cours de réalisation du projet jeparledoncjesuis qui sera un site de lanceur d'alertes,gratuit open source et chiffré.</p>
 
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <img src="assets/images/pentest.png" alt="Test d'intrusion Web">
-                        <h3></h3>
-                        <p></p>
-                        <a href="https://www.youtube.com/watch?v=h843Im8QmnA" class="button">Méthodologie d'un pentest</a>
+                    <div class="projects-grid">
+                        <div class="project-card">
+                            <img src="assets/images/pentest.png" alt="Test d'intrusion Web">
+                            <h3></h3>
+                            <p></p>
+                            <a href="https://www.youtube.com/watch?v=h843Im8QmnA" class="button">Méthodologie d'un pentest</a>
+                        </div>
+
+                        <div class="project-card">
+                            <img src="assets/images/thm.png" alt="THM">
+                            <h3></h3>
+                            <p></p>
+                            <a href="https://tryhackme.com/r/p/bash1337" class="button">THM</a>
+                        </div>
+
+                        <!-- Ajoutez d'autres projets similaires ici -->
+                    </div>
+                </section>
+
+                <section id="contact" class="card">
+                    <h2>Contact</h2>
+                    <div class="contact-intro">
+                        <p>Vous souhaitez me contacter ? C'est <span class="highlight">parti</span> !</p>
                     </div>
 
-                    <div class="project-card">
-                        <img src="assets/images/thm.png" alt="THM">
-                        <h3></h3>
-                        <p></p>
-                        <a href="https://tryhackme.com/r/p/bash1337" class="button">THM</a>
-                    </div>
+                    <form action="https://formspree.io/f/meoqgaoz" method="POST" class="contact-form">
+                        <div class="form-group">
+                            <input type="text" name="name" id="name" required>
+                            <label for="name">Votre nom</label>
+                            <div class="line"></div>
+                        </div>
 
-                    <!-- Ajoutez d'autres projets similaires ici -->
-                </div>
-            </section>
+                        <div class="form-group">
+                            <input type="email" name="email" id="email" required>
+                            <label for="email">Votre email</label>
+                            <div class="line"></div>
+                        </div>
 
-            <section id="contact" class="card">
-                <h2>Contact</h2>
-                <div class="contact-intro">
-                    <p>Vous souhaitez me contacter ? C'est <span class="highlight">parti</span> !</p>
-                </div>
+                        <div class="form-group">
+                            <textarea name="message" id="message" rows="5" required></textarea>
+                            <label for="message">Votre message</label>
+                            <div class="line"></div>
+                        </div>
 
-                <form action="https://formspree.io/f/meoqgaoz" method="POST" class="contact-form">
-                    <div class="form-group">
-                        <input type="text" name="name" id="name" required>
-                        <label for="name">Votre nom</label>
-                        <div class="line"></div>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="email" name="email" id="email" required>
-                        <label for="email">Votre email</label>
-                        <div class="line"></div>
-                    </div>
-
-                    <div class="form-group">
-                        <textarea name="message" id="message" rows="5" required></textarea>
-                        <label for="message">Votre message</label>
-                        <div class="line"></div>
-                    </div>
-
-                    <button type="submit" class="submit-btn">
-                        <span>Envoyer le message</span>
-                        <div class="btn-glow"></div>
-                    </button>
-                </form>
-            </section>
+                        <button type="submit" class="submit-btn">
+                            <span>Envoyer le message</span>
+                            <div class="btn-glow"></div>
+                        </button>
+                    </form>
+                </section>
+            </div>
         </div>
     </div>
 
@@ -645,5 +770,67 @@
     </div>
 
     <script src="assets/js/script.js"></script>
+    <script>
+        // Gestion du thème
+        const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+        const currentTheme = localStorage.getItem('theme');
+
+        if (currentTheme) {
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            if (currentTheme === 'light') {
+                toggleSwitch.checked = true;
+            }
+        }
+
+        function switchTheme(e) {
+            if (e.target.checked) {
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        toggleSwitch.addEventListener('change', switchTheme);
+
+        // Gestion du menu
+        const navItems = document.querySelectorAll('.nav-item');
+        const sections = document.querySelectorAll('section');
+
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // Retirer la classe active de tous les items
+                navItems.forEach(navItem => navItem.classList.remove('active'));
+                // Ajouter la classe active à l'item cliqué
+                item.classList.add('active');
+
+                // Faire défiler jusqu'à la section correspondante
+                const sectionId = item.getAttribute('data-section');
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    section.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Observer l'intersection des sections pour mettre à jour le menu
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    navItems.forEach(item => {
+                        if (item.getAttribute('data-section') === id) {
+                            item.classList.add('active');
+                        } else {
+                            item.classList.remove('active');
+                        }
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        sections.forEach(section => observer.observe(section));
+    </script>
 </body>
 </html>
