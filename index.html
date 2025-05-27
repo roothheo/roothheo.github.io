@@ -596,8 +596,8 @@
     <nav class="nav-container">
         <ul class="nav-menu">
             <li class="nav-item active" data-section="accueil">Accueil</li>
-            <li class="nav-item" data-section="projets">Projets</li>
             <li class="nav-item" data-section="competences">Compétences</li>
+            <li class="nav-item" data-section="missions">Projets</li>
             <li class="nav-item" data-section="contact">Contact</li>
         </ul>
     </nav>
@@ -774,6 +774,46 @@
         // Gestion du thème
         const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
         const currentTheme = localStorage.getItem('theme');
+
+        // Empêcher le clic droit
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            const message = document.createElement('div');
+            message.style.position = 'fixed';
+            message.style.top = '50%';
+            message.style.left = '50%';
+            message.style.transform = 'translate(-50%, -50%)';
+            message.style.backgroundColor = 'var(--card-bg)';
+            message.style.color = 'var(--accent-color)';
+            message.style.padding = '20px';
+            message.style.borderRadius = '5px';
+            message.style.border = '1px solid var(--accent-color)';
+            message.style.boxShadow = '0 0 10px var(--accent-color)';
+            message.style.zIndex = '9999';
+            message.style.textAlign = 'center';
+            message.style.fontFamily = "'Courier New', monospace";
+            message.innerHTML = `
+                <h3 style="margin: 0 0 10px 0;">⚠️ Accès Refusé ⚠️</h3>
+                <p style="margin: 0;">Le clic droit est désactivé sur ce site.</p>
+            `;
+            document.body.appendChild(message);
+            
+            setTimeout(() => {
+                message.style.opacity = '0';
+                message.style.transition = 'opacity 0.5s ease';
+                setTimeout(() => message.remove(), 500);
+            }, 2000);
+        });
+
+        // Empêcher la sélection de texte
+        document.addEventListener('selectstart', function(e) {
+            e.preventDefault();
+        });
+
+        // Empêcher le glisser-déposer
+        document.addEventListener('dragstart', function(e) {
+            e.preventDefault();
+        });
 
         if (currentTheme) {
             document.documentElement.setAttribute('data-theme', currentTheme);
