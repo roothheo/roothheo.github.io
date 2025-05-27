@@ -114,3 +114,53 @@ document.addEventListener('DOMContentLoaded', () => {
     updateDiscordAvatar();
     checkAvatarChanges();
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Fonction pour l'effet de typing
+    function typeWriter(element, text, speed = 100) {
+        let i = 0;
+        element.innerHTML = '';
+        element.classList.add('typing-effect');
+        
+        function type() {
+            if (i < text.length) {
+                element.innerHTML += text.charAt(i);
+                i++;
+                setTimeout(type, speed);
+            } else {
+                element.classList.remove('typing-effect');
+                // Ajouter l'effet glitch après le typing
+                setTimeout(() => {
+                    element.classList.add('glitch');
+                    element.setAttribute('data-text', text);
+                }, 1000);
+            }
+        }
+        type();
+    }
+
+    // Fonction pour appliquer l'effet glitch aléatoirement
+    function applyRandomGlitch() {
+        const elements = document.querySelectorAll('h1, h2, h3, p');
+        const randomElement = elements[Math.floor(Math.random() * elements.length)];
+        
+        if (!randomElement.classList.contains('glitch')) {
+            randomElement.classList.add('glitch');
+            randomElement.setAttribute('data-text', randomElement.textContent);
+            
+            // Retirer l'effet glitch après un certain temps
+            setTimeout(() => {
+                randomElement.classList.remove('glitch');
+            }, 2000);
+        }
+    }
+
+    // Appliquer l'effet de typing au titre principal
+    const mainTitle = document.querySelector('h1');
+    if (mainTitle) {
+        typeWriter(mainTitle, mainTitle.textContent);
+    }
+
+    // Appliquer l'effet glitch aléatoirement toutes les 5 secondes
+    setInterval(applyRandomGlitch, 5000);
+});

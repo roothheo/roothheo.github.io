@@ -12,6 +12,371 @@
             font-family: 'Courier New', Courier, monospace !important;
             letter-spacing: 0.5px;
         }
+
+        body {
+            background-color: #000;
+            color: #ffd700;
+            text-shadow: 0 0 5px #ffd700;
+        }
+
+        .card {
+            background-color: rgba(0, 0, 0, 0.8);
+            border: 1px solid #ffd700;
+            box-shadow: 0 0 10px #ffd700;
+        }
+
+        h1, h2, h3 {
+            color: #ffd700;
+            text-shadow: 0 0 8px #ffd700;
+        }
+
+        a {
+            color: #ffd700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            text-shadow: 0 0 10px #ffd700;
+        }
+
+        .button {
+            border: 1px solid #ffd700;
+            color: #ffd700;
+            background-color: transparent;
+        }
+
+        .button:hover {
+            background-color: rgba(255, 215, 0, 0.1);
+            box-shadow: 0 0 15px #ffd700;
+        }
+
+        input, textarea {
+            background-color: rgba(0, 0, 0, 0.8);
+            border: 1px solid #ffd700;
+            color: #ffd700;
+        }
+
+        input:focus, textarea:focus {
+            box-shadow: 0 0 10px #ffd700;
+            outline: none;
+        }
+
+        /* Effet de typing */
+        .typing-effect {
+            overflow: hidden;
+            border-right: 2px solid #ffd700;
+            white-space: nowrap;
+            margin: 0 auto;
+            animation: typing 3.5s steps(40, end),
+                       blink-caret .75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #ffd700 }
+        }
+
+        /* Effet de glitch */
+        .glitch {
+            position: relative;
+            animation: glitch 1s linear infinite;
+        }
+
+        @keyframes glitch {
+            2%, 64% {
+                transform: translate(2px, 0) skew(0deg);
+            }
+            4%, 60% {
+                transform: translate(-2px, 0) skew(0deg);
+            }
+            62% {
+                transform: translate(0, 0) skew(5deg);
+            }
+        }
+
+        .glitch:before,
+        .glitch:after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch:before {
+            left: 2px;
+            text-shadow: -2px 0 #ffd700;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+
+        .glitch:after {
+            left: -2px;
+            text-shadow: -2px 0 #ffd700, 2px 2px #ffd700;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim2 5s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim {
+            0% {
+                clip: rect(31px, 9999px, 94px, 0);
+            }
+            5% {
+                clip: rect(70px, 9999px, 71px, 0);
+            }
+            10% {
+                clip: rect(75px, 9999px, 77px, 0);
+            }
+            15% {
+                clip: rect(14px, 9999px, 82px, 0);
+            }
+            20% {
+                clip: rect(1px, 9999px, 91px, 0);
+            }
+            25% {
+                clip: rect(86px, 9999px, 73px, 0);
+            }
+            30% {
+                clip: rect(23px, 9999px, 29px, 0);
+            }
+            35% {
+                clip: rect(19px, 9999px, 83px, 0);
+            }
+            40% {
+                clip: rect(40px, 9999px, 73px, 0);
+            }
+            45% {
+                clip: rect(25px, 9999px, 23px, 0);
+            }
+            50% {
+                clip: rect(14px, 9999px, 82px, 0);
+            }
+            55% {
+                clip: rect(28px, 9999px, 19px, 0);
+            }
+            60% {
+                clip: rect(83px, 9999px, 30px, 0);
+            }
+            65% {
+                clip: rect(73px, 9999px, 51px, 0);
+            }
+            70% {
+                clip: rect(23px, 9999px, 29px, 0);
+            }
+            75% {
+                clip: rect(19px, 9999px, 83px, 0);
+            }
+            80% {
+                clip: rect(40px, 9999px, 73px, 0);
+            }
+            85% {
+                clip: rect(95px, 9999px, 30px, 0);
+            }
+            90% {
+                clip: rect(63px, 9999px, 68px, 0);
+            }
+            95% {
+                clip: rect(37px, 9999px, 23px, 0);
+            }
+            100% {
+                clip: rect(14px, 9999px, 82px, 0);
+            }
+        }
+
+        @keyframes glitch-anim2 {
+            0% {
+                clip: rect(65px, 9999px, 100px, 0);
+            }
+            5% {
+                clip: rect(52px, 9999px, 74px, 0);
+            }
+            10% {
+                clip: rect(79px, 9999px, 85px, 0);
+            }
+            15% {
+                clip: rect(75px, 9999px, 5px, 0);
+            }
+            20% {
+                clip: rect(67px, 9999px, 61px, 0);
+            }
+            25% {
+                clip: rect(14px, 9999px, 79px, 0);
+            }
+            30% {
+                clip: rect(1px, 9999px, 66px, 0);
+            }
+            35% {
+                clip: rect(86px, 9999px, 30px, 0);
+            }
+            40% {
+                clip: rect(23px, 9999px, 98px, 0);
+            }
+            45% {
+                clip: rect(85px, 9999px, 72px, 0);
+            }
+            50% {
+                clip: rect(71px, 9999px, 75px, 0);
+            }
+            55% {
+                clip: rect(2px, 9999px, 48px, 0);
+            }
+            60% {
+                clip: rect(30px, 9999px, 16px, 0);
+            }
+            65% {
+                clip: rect(59px, 9999px, 50px, 0);
+            }
+            70% {
+                clip: rect(41px, 9999px, 62px, 0);
+            }
+            75% {
+                clip: rect(2px, 9999px, 82px, 0);
+            }
+            80% {
+                clip: rect(47px, 9999px, 73px, 0);
+            }
+            85% {
+                clip: rect(3px, 9999px, 27px, 0);
+            }
+            90% {
+                clip: rect(26px, 9999px, 55px, 0);
+            }
+            95% {
+                clip: rect(42px, 9999px, 97px, 0);
+            }
+            100% {
+                clip: rect(38px, 9999px, 49px, 0);
+            }
+        }
+
+        /* Animation du formulaire */
+        .form-group {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px 0;
+            font-size: 16px;
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid #ffd700;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .form-group label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 10px 0;
+            font-size: 16px;
+            color: #ffd700;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus ~ label,
+        .form-group textarea:focus ~ label,
+        .form-group input:valid ~ label,
+        .form-group textarea:valid ~ label {
+            top: -20px;
+            font-size: 12px;
+            color: #ffd700;
+            text-shadow: 0 0 5px #ffd700;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-bottom: 2px solid #ffd700;
+            box-shadow: 0 0 10px #ffd700;
+        }
+
+        .form-group .line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ffd700;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus ~ .line,
+        .form-group textarea:focus ~ .line {
+            width: 100%;
+            box-shadow: 0 0 10px #ffd700;
+        }
+
+        /* Animation de pulsation pour le label */
+        @keyframes labelPulse {
+            0% { text-shadow: 0 0 5px #ffd700; }
+            50% { text-shadow: 0 0 15px #ffd700; }
+            100% { text-shadow: 0 0 5px #ffd700; }
+        }
+
+        .form-group input:focus ~ label,
+        .form-group textarea:focus ~ label {
+            animation: labelPulse 1.5s infinite;
+        }
+
+        /* Animation de l'icône de validation */
+        .form-group::after {
+            content: '✓';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #ffd700;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:valid::after,
+        .form-group textarea:valid::after {
+            opacity: 1;
+        }
+
+        /* Animation du bouton d'envoi */
+        .submit-btn {
+            position: relative;
+            padding: 12px 30px;
+            background: transparent;
+            border: 2px solid #ffd700;
+            color: #ffd700;
+            font-size: 16px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: rgba(255, 215, 0, 0.1);
+            box-shadow: 0 0 20px #ffd700;
+        }
+
+        .btn-glow {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,215,0,0.2) 0%, transparent 70%);
+            transform: scale(0);
+            transition: transform 0.5s ease;
+        }
+
+        .submit-btn:hover .btn-glow {
+            transform: scale(1);
+        }
     </style>
 </head>
 <body>
