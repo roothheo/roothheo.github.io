@@ -657,18 +657,19 @@
             background: var(--accent-color);
             color: #222;
             border-radius: 50%;
-            box-shadow: 0 0 12px var(--accent-color);
+            box-shadow: 0 0 10px var(--accent-color);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 2rem;
+            font-family: 'Courier New', monospace;
             cursor: pointer;
-            z-index: 99998;
+            z-index: 99999;
             transition: box-shadow 0.2s;
             border: 2px solid var(--card-bg);
         }
         #chatbot-badge:hover {
-            box-shadow: 0 0 24px var(--accent-color);
+            box-shadow: 0 0 20px 6px var(--accent-color);
         }
     </style>
 </head>
@@ -691,155 +692,155 @@
 
     <div class="main-content">
         <canvas id="matrix-bg"></canvas>
-        <div class="background-gradient">
-            <header class="main-header">
-                <div class="lock-icon">🔒</div>
+    <div class="background-gradient">
+        <header class="main-header">
+            <div class="lock-icon">🔒</div>
                 <h1><span class="glitch-text glitch-title">Portfolio</span></h1>
-                <p>Développeur / Pentester</p>
-            </header>
+            <p>Développeur / Pentester</p>
+        </header>
 
-            <div class="container">
-                <section id="about" class="card">
-                    <div class="content-wrapper">
-                        <div class="text-content">
-                            <h2>Qui suis-je</h2>
-                            <p>Je suis un jeune étudiant en informatique et je suis passionné par la sécurité informatique.J'adore le skin poiscaille comme vous avez pu le remarquer.</p>
-                        </div>
-                        <div class="profile-image">
-                            <img src="assets/images/poisson.png" alt="Profile">
+        <div class="container">
+            <section id="about" class="card">
+                <div class="content-wrapper">
+                    <div class="text-content">
+                        <h2>Qui suis-je</h2>
+                        <p>Je suis un jeune étudiant en informatique et je suis passionné par la sécurité informatique.J'adore le skin poiscaille comme vous avez pu le remarquer.</p>
+                    </div>
+                    <div class="profile-image">
+                        <img src="assets/images/poisson.png" alt="Profile">
+                    </div>
+                </div>
+            </section>
+
+            <section id="competences" class="card">
+                <h2>Compétences</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Systèmes</h3>
+                        <div class="skill-item">
+                            <span class="skill-name">Linux</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" style="width: 60%;"></div>
+                            </div>
+                            <span class="skill-level-text">Junior</span>
                         </div>
                     </div>
-                </section>
 
-                <section id="competences" class="card">
-                    <h2>Compétences</h2>
-                    <div class="skills-grid">
-                        <div class="skill-category">
-                            <h3>Systèmes</h3>
-                            <div class="skill-item">
-                                <span class="skill-name">Linux</span>
-                                <div class="skill-level">
-                                    <div class="skill-bar" style="width: 60%;"></div>
-                                </div>
-                                <span class="skill-level-text">Junior</span>
+                    <div class="skill-category">
+                        <h3>Développement Web</h3>
+                        <div class="skill-item">
+                            <span class="skill-name">HTML</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" style="width: 60%;"></div>
                             </div>
+                            <span class="skill-level-text">Junior</span>
                         </div>
-
-                        <div class="skill-category">
-                            <h3>Développement Web</h3>
-                            <div class="skill-item">
-                                <span class="skill-name">HTML</span>
-                                <div class="skill-level">
-                                    <div class="skill-bar" style="width: 60%;"></div>
-                                </div>
-                                <span class="skill-level-text">Junior</span>
+                        <div class="skill-item">
+                            <span class="skill-name">CSS</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" style="width: 60%;"></div>
                             </div>
-                            <div class="skill-item">
-                                <span class="skill-name">CSS</span>
-                                <div class="skill-level">
-                                    <div class="skill-bar" style="width: 60%;"></div>
-                                </div>
-                                <span class="skill-level-text">Junior</span>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">JavaScript</span>
-                                <div class="skill-level">
-                                    <div class="skill-bar" style="width: 20%;"></div>
-                                </div>
-                                <span class="skill-level-text">Débutant</span>
-                            </div>
+                            <span class="skill-level-text">Junior</span>
                         </div>
-                        <div class="skill-category">
-                            <h3>Langues</h3>
-                            <div class="skill-item">
-                                <span class="skill-name">Français</span>
-                                <div class="skill-level">
-                                    <div class="skill-bar" style="width: 100%;"></div>
-                                </div>
-                                <span class="skill-level-text">Natif</span>
+                        <div class="skill-item">
+                            <span class="skill-name">JavaScript</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" style="width: 20%;"></div>
                             </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Anglais</span>
-                                <div class="skill-level">
-                                    <div class="skill-bar" style="width: 80%;"></div>
-                                </div>
-                                <span class="skill-level-text">Avancé</span>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Italien</span>
-                                <div class="skill-level">
-                                    <div class="skill-bar" style="width: 10%;"></div>
-                                </div>
-                                <span class="skill-level-text">Débutant</span>
-                            </div>
-                        </div>
-                        <div class="skill-category">
-                            <h3>Sécurité</h3>
-                            <div class="skill-item">
-                                <span class="skill-name">Pentest</span>
-                                <div class="skill-level">
-                                    <div class="skill-bar" style="width: 20%;"></div>
-                                </div>
-                                <span class="skill-level-text">Débutant</span>
-                            </div>
+                            <span class="skill-level-text">Débutant</span>
                         </div>
                     </div>
-                </section>
-
-                <section id="missions" class="card">
-                    <h2>Projets/Missions</h2>
-                    <p class="subtitle">Actuellement en cours de réalisation du projet jeparledoncjesuis qui sera un site de lanceur d'alertes,gratuit open source et chiffré.</p>
-
-                    <div class="projects-grid">
-                        <div class="project-card">
-                            <img src="assets/images/pentest.png" alt="Test d'intrusion Web">
-                            <h3></h3>
-                            <p></p>
-                            <a href="https://www.youtube.com/watch?v=h843Im8QmnA" class="button">Méthodologie d'un pentest</a>
+                        <div class="skill-category">
+                        <h3>Langues</h3>
+                        <div class="skill-item">
+                            <span class="skill-name">Français</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" style="width: 100%;"></div>
+                            </div>
+                            <span class="skill-level-text">Natif</span>
                         </div>
-
-                        <div class="project-card">
-                            <img src="assets/images/thm.png" alt="THM">
-                            <h3></h3>
-                            <p></p>
-                            <a href="https://tryhackme.com/r/p/bash1337" class="button">THM</a>
+                        <div class="skill-item">
+                            <span class="skill-name">Anglais</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" style="width: 80%;"></div>
+                            </div>
+                            <span class="skill-level-text">Avancé</span>
                         </div>
-
-                        <!-- Ajoutez d'autres projets similaires ici -->
+                        <div class="skill-item">
+                            <span class="skill-name">Italien</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" style="width: 10%;"></div>
+                            </div>
+                            <span class="skill-level-text">Débutant</span>
+                        </div>
                     </div>
-                </section>
+                    <div class="skill-category">
+                        <h3>Sécurité</h3>
+                        <div class="skill-item">
+                            <span class="skill-name">Pentest</span>
+                            <div class="skill-level">
+                                <div class="skill-bar" style="width: 20%;"></div>
+                            </div>
+                            <span class="skill-level-text">Débutant</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-                <section id="contact" class="card">
-                    <h2>Contact</h2>
-                    <div class="contact-intro">
-                        <p>Vous souhaitez me contacter ? C'est <span class="highlight">parti</span> !</p>
+            <section id="missions" class="card">
+                <h2>Projets/Missions</h2>
+                <p class="subtitle">Actuellement en cours de réalisation du projet jeparledoncjesuis qui sera un site de lanceur d'alertes,gratuit open source et chiffré.</p>
+
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <img src="assets/images/pentest.png" alt="Test d'intrusion Web">
+                        <h3></h3>
+                        <p></p>
+                        <a href="https://www.youtube.com/watch?v=h843Im8QmnA" class="button">Méthodologie d'un pentest</a>
                     </div>
 
-                    <form action="https://formspree.io/f/meoqgaoz" method="POST" class="contact-form">
-                        <div class="form-group">
-                            <input type="text" name="name" id="name" required>
-                            <label for="name">Votre nom</label>
-                            <div class="line"></div>
-                        </div>
+                    <div class="project-card">
+                        <img src="assets/images/thm.png" alt="THM">
+                        <h3></h3>
+                        <p></p>
+                        <a href="https://tryhackme.com/r/p/bash1337" class="button">THM</a>
+                    </div>
 
-                        <div class="form-group">
-                            <input type="email" name="email" id="email" required>
-                            <label for="email">Votre email</label>
-                            <div class="line"></div>
-                        </div>
+                    <!-- Ajoutez d'autres projets similaires ici -->
+                </div>
+            </section>
 
-                        <div class="form-group">
-                            <textarea name="message" id="message" rows="5" required></textarea>
-                            <label for="message">Votre message</label>
-                            <div class="line"></div>
-                        </div>
+            <section id="contact" class="card">
+                <h2>Contact</h2>
+                <div class="contact-intro">
+                    <p>Vous souhaitez me contacter ? C'est <span class="highlight">parti</span> !</p>
+                </div>
 
-                        <button type="submit" class="submit-btn">
-                            <span>Envoyer le message</span>
-                            <div class="btn-glow"></div>
-                        </button>
-                    </form>
-                </section>
+                <form action="https://formspree.io/f/meoqgaoz" method="POST" class="contact-form">
+                    <div class="form-group">
+                        <input type="text" name="name" id="name" required>
+                        <label for="name">Votre nom</label>
+                        <div class="line"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" name="email" id="email" required>
+                        <label for="email">Votre email</label>
+                        <div class="line"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <textarea name="message" id="message" rows="5" required></textarea>
+                        <label for="message">Votre message</label>
+                        <div class="line"></div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <span>Envoyer le message</span>
+                        <div class="btn-glow"></div>
+                    </button>
+                </form>
+            </section>
             </div>
         </div>
     </div>
@@ -866,7 +867,7 @@
       </form>
     </div>
     <div id="chatbot-badge" style="display:none;">
-      <span>��</span>
+      🤖
     </div>
 
     <script src="assets/js/script.js"></script>
@@ -996,6 +997,7 @@
         const chatbotForm = document.getElementById('chatbot-form');
         const chatbotInput = document.getElementById('chatbot-input');
         const chatbotClose = document.getElementById('chatbot-close');
+        const chatbotBadge = document.getElementById('chatbot-badge');
 
         // Réponses simples
         function getBotResponse(msg) {
@@ -1033,13 +1035,11 @@
         // Fermer le chatbot
         chatbotClose.onclick = () => {
             chatbotWidget.style.display = 'none';
-            document.getElementById('chatbot-badge').style.display = 'flex';
+            chatbotBadge.style.display = 'flex';
         };
-
-        // Réouvrir le chatbot en cliquant sur la gommette
-        document.getElementById('chatbot-badge').onclick = () => {
+        chatbotBadge.onclick = () => {
             chatbotWidget.style.display = 'flex';
-            document.getElementById('chatbot-badge').style.display = 'none';
+            chatbotBadge.style.display = 'none';
         };
 
         // Message de bienvenue
