@@ -149,6 +149,12 @@ app.get('/api/discord/user', async (req, res) => {
 
 // Servir les fichiers statiques
 app.use(express.static('.'));
+app.use('/autoécole', express.static('autoécole'));
+
+// Route pour la page d'accueil de l'autoécole
+app.get('/autoécole', (req, res) => {
+    res.sendFile(__dirname + '/autoécole/accueil.html');
+});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
